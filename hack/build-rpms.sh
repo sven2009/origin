@@ -25,7 +25,7 @@ if [[ "${OS_ONLY_BUILD_PLATFORMS:-}" == 'linux/amd64' ]]; then
 	# furthermore not build cross-platform clients in tito
 	make_redistributable=0
 else
-	make_redistributable=1
+	make_redistributable=0
 fi
 if [[ -n "${OS_BUILD_SRPM-}" ]]; then
 	srpm="a"
@@ -70,10 +70,10 @@ if [[ -n "${dirty}" && "${OS_GIT_TREE_STATE}" == "dirty" ]]; then
 
 else
 	mkdir -p "${rpm_tmp_dir}/SOURCES"
-	tar czf "${rpm_tmp_dir}/SOURCES/${OS_RPM_NAME}-${OS_RPM_VERSION}.tar.gz" \
-		--owner=0 --group=0 \
-		--exclude=_output --exclude=.git --transform "s|^|${OS_RPM_NAME}-${OS_RPM_VERSION}/|rSH" \
-		.
+#	tar czf "${rpm_tmp_dir}/SOURCES/${OS_RPM_NAME}-${OS_RPM_VERSION}.tar.gz" \
+#		--owner=0 --group=0 \
+#		--exclude=_output --exclude=.git --transform "s|^|${OS_RPM_NAME}-${OS_RPM_VERSION}/|rSH" \
+#		.
 
 	rpmbuild -b${srpm} "${OS_RPM_SPECFILE}" \
 		--define "skip_dist 1" \

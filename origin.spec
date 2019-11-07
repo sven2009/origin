@@ -78,15 +78,15 @@ ExclusiveArch:  %{go_arches}
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x
 %endif
 
-Source0:        https://%{import_path}/archive/%{commit}/%{name}-%{version}.tar.gz
-BuildRequires:  systemd
-BuildRequires:  bsdtar
-BuildRequires:  golang >= %{golang_version}
-BuildRequires:  krb5-devel
-BuildRequires:  rsync
-Requires:       %{name}-clients = %{version}-%{release}
-Requires:       iptables
-Obsoletes:      openshift < %{package_refactor_version}
+#Source0:        https://%{import_path}/archive/%{commit}/%{name}-%{version}.tar.gz
+#BuildRequires:  systemd
+#BuildRequires:  bsdtar
+#BuildRequires:  golang >= %{golang_version}
+#BuildRequires:  krb5-devel
+#BuildRequires:  rsync
+#Requires:       %{name}-clients = %{version}-%{release}
+#Requires:       iptables
+#Obsoletes:      openshift < %{package_refactor_version}
 
 #
 # The following Bundled Provides entries are populated automatically by the
@@ -358,8 +358,8 @@ sed -i "s|@@PACKAGE_LIST-VARIABLE@@|docker*1.14* docker*1.15* docker*1.16* docke
 chmod 0744 $RPM_BUILD_ROOT/usr/sbin/%{name}-docker-excluder
 
 # Give the excluders a consistent timestamp between multi-arch builds
-touch --reference=%{SOURCE0} $RPM_BUILD_ROOT/usr/sbin/%{name}-excluder
-touch --reference=%{SOURCE0} $RPM_BUILD_ROOT/usr/sbin/%{name}-docker-excluder
+#touch --reference=%{SOURCE0} $RPM_BUILD_ROOT/usr/sbin/%{name}-excluder
+#touch --reference=%{SOURCE0} $RPM_BUILD_ROOT/usr/sbin/%{name}-docker-excluder
 
 %files
 %doc README.md

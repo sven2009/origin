@@ -128,7 +128,7 @@ func strictDecodeCheck(jsonData []byte, obj runtime.Object) error {
 		return nil
 	}
 	d := json.NewDecoder(bytes.NewReader(jsonData))
-	d.DisallowUnknownFields()
+	//d.DisallowUnknownFields()
 	// note that we only care about the error, out is discarded
 	if err := d.Decode(out); err != nil {
 		glog.Errorf("Encountered config error %v in object %T, raw JSON:\n%s", err, obj, string(jsonData)) // TODO just return the error and die

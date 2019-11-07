@@ -297,7 +297,7 @@ install-travis:
 # Example:
 #   make build-rpms
 build-rpms:
-	OS_ONLY_BUILD_PLATFORMS='linux/amd64' hack/build-rpms.sh
+	OS_ONLY_BUILD_PLATFORMS='linux/arm64' hack/build-rpms.sh
 .PHONY: build-rpms
 
 # Build RPMs for all architectures
